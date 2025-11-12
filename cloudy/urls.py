@@ -18,11 +18,14 @@ from django.contrib import admin
 from django.http import HttpResponse
 from django.urls import path
 
-from hello.views import index, info
+from hello.views import index, info, hello
 
 urlpatterns = [
 
-    path('hello', index, name='index'),
+
+    path('', index, name='index'),
+
+    path('hello/<str:name>', hello, name='index'),
 
     path('health', lambda request: HttpResponse("OK"), name='health'),
     path('info', info, name='info'),
